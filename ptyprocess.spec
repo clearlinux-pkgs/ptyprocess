@@ -4,7 +4,7 @@
 #
 Name     : ptyprocess
 Version  : 0.5
-Release  : 1
+Release  : 2
 URL      : https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-0.5.tar.gz
 Source0  : https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-0.5.tar.gz
 Summary  : Run a subprocess in a pseudo terminal
