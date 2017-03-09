@@ -4,7 +4,7 @@
 #
 Name     : ptyprocess
 Version  : 0.5.1
-Release  : 9
+Release  : 10
 URL      : https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-0.5.1.tar.gz
 Source0  : https://pypi.python.org/packages/source/p/ptyprocess/ptyprocess-0.5.1.tar.gz
 Summary  : Run a subprocess in a pseudo terminal
@@ -34,12 +34,12 @@ python components for the ptyprocess package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485750860
+export SOURCE_DATE_EPOCH=1489025281
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1485750860
+export SOURCE_DATE_EPOCH=1489025281
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
