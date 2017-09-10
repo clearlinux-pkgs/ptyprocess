@@ -4,12 +4,13 @@
 #
 Name     : ptyprocess
 Version  : 0.5.2
-Release  : 12
+Release  : 13
 URL      : https://pypi.debian.net/ptyprocess/ptyprocess-0.5.2.tar.gz
 Source0  : https://pypi.debian.net/ptyprocess/ptyprocess-0.5.2.tar.gz
 Summary  : Run a subprocess in a pseudo terminal
 Group    : Development/Tools
 License  : ISC
+Requires: ptyprocess-legacypython
 Requires: ptyprocess-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -21,9 +22,18 @@ BuildRequires : setuptools
 Launch a subprocess in a pseudo terminal (pty), and interact with both the
 process and its pty.
 
+%package legacypython
+Summary: legacypython components for the ptyprocess package.
+Group: Default
+
+%description legacypython
+legacypython components for the ptyprocess package.
+
+
 %package python
 Summary: python components for the ptyprocess package.
 Group: Default
+Requires: ptyprocess-legacypython
 
 %description python
 python components for the ptyprocess package.
@@ -37,12 +47,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1498180281
+export SOURCE_DATE_EPOCH=1505056472
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1498180281
+export SOURCE_DATE_EPOCH=1505056472
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -53,7 +63,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
