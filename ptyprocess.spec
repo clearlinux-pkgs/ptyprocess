@@ -4,13 +4,14 @@
 #
 Name     : ptyprocess
 Version  : 0.5.2
-Release  : 14
+Release  : 15
 URL      : https://pypi.debian.net/ptyprocess/ptyprocess-0.5.2.tar.gz
 Source0  : https://pypi.debian.net/ptyprocess/ptyprocess-0.5.2.tar.gz
 Summary  : Run a subprocess in a pseudo terminal
 Group    : Development/Tools
 License  : ISC
 Requires: ptyprocess-legacypython
+Requires: ptyprocess-python3
 Requires: ptyprocess-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -25,6 +26,7 @@ process and its pty.
 %package legacypython
 Summary: legacypython components for the ptyprocess package.
 Group: Default
+Requires: python-core
 
 %description legacypython
 legacypython components for the ptyprocess package.
@@ -34,9 +36,19 @@ legacypython components for the ptyprocess package.
 Summary: python components for the ptyprocess package.
 Group: Default
 Requires: ptyprocess-legacypython
+Requires: ptyprocess-python3
 
 %description python
 python components for the ptyprocess package.
+
+
+%package python3
+Summary: python3 components for the ptyprocess package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the ptyprocess package.
 
 
 %prep
@@ -47,12 +59,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505404957
+export SOURCE_DATE_EPOCH=1507164736
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505404957
+export SOURCE_DATE_EPOCH=1507164736
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -68,5 +80,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
