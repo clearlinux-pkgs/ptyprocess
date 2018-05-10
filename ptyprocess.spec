@@ -4,7 +4,7 @@
 #
 Name     : ptyprocess
 Version  : 0.5.2
-Release  : 20
+Release  : 21
 URL      : https://pypi.debian.net/ptyprocess/ptyprocess-0.5.2.tar.gz
 Source0  : https://pypi.debian.net/ptyprocess/ptyprocess-0.5.2.tar.gz
 Summary  : Run a subprocess in a pseudo terminal
